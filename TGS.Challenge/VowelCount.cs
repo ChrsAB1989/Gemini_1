@@ -12,11 +12,42 @@ namespace TGS.Challenge
         There are accompanying unit tests for this exercise, ensure all tests pass & make
         sure the unit tests are correct too.
      */
+
+
     public class VowelCount
     {
-        public int Count(string value)
+        //Returns count of vowels in string
+        public int? Count(string value)
         {
-            return -1;
+            int count = 0;
+
+            //If value is null throw exception
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                //Loop through char's in string to check for vowels
+                for (int i = 0; i < value.Length; i++)
+                {
+                    //Check for vowel
+                    if (IsVowel(value[i]))
+                    {
+                        ++count;
+                    }
+                }
+
+                return count;
+            }
+        }
+
+        //Function to check if char is a vowel
+        //Returns true is char is a vowel
+        public static bool IsVowel(char ch)
+        {
+            ch = char.ToLower(ch);
+            return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u');
         }
     }
 }
